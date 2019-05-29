@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--配置对外提供服务的端口号-->
+    <dubbo:protocol name="dubbo" port="20885"/>
+    <!--给当前服务起个名字-->
+    <dubbo:application name="pinyougou-page-service"/>
+    <!--扫描包-->
+    <dubbo:annotation package="cn.itcast.core.service"/>
+
+    <!--配置freemarker-->
+    <bean id="freeMarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <!--配置模板所在目录位置-->
+        <property name="templateLoaderPath" value="/WEB-INF/ftl/"></property>
+        <!--配置读取服务模板的字符集编码为utf-8-->
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+
+</beans>
